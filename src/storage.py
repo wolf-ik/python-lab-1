@@ -1,3 +1,6 @@
+import pickle, re
+
+
 class Storage(object):
     _set = set()
     _working = False
@@ -39,10 +42,36 @@ class Storage(object):
         self._working = False
         return 'Stoped.'
 
+    def grep(self, *args):
+        regex_str = '^$' if not args[0] else args[0]
+        regex = re.compile(regex_str)
+        l = []
+        for item in self._set:
+            if regex.match(item):
+                l.append(item)
+        return ' '.join(l)
+
+    def save(self, *args):
+        if args[0]:
+            file = args[0]
+            with open(file, 'w') as f:
+                f.write(pickle.dumps(self._set))
+        return 'Saved.'
+
+    def load(self, *args):
+        if args[0]:
+            file = args[0]
+            with open(file, 'r') as f:
+                self._set = pickle.loads(f.read())
+        return 'Loaded.'
+
     _command_mapping = {
         'add': add,
         'remove': remove,
         'find': find,
         'list': list,
         'exit': exit,
+        'grep': grep,
+        'save': save,
+        'load': load,
     }
