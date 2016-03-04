@@ -24,7 +24,7 @@ class Storage(object):
         else:
             return 'Invalid arguments.'
         try:
-            self._set.discard(key)
+            self._set.remove(key)
         except KeyError:
             return 'Not found.'
         return 'Deleted.'
