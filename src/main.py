@@ -39,7 +39,7 @@ def parse_args():
     parser_fibonacci.set_defaults(func=fibonacci_handler)
 
     parser_sort = subparsers.add_parser('sort', help='Sort array.')
-    parser_sort.add_argument('method', type=str, help='Methods: radix, quick, merge.')
+    parser_sort.add_argument('-m', '--method', type=str, help='Methods: radix, quick, merge.')
     parser_sort.add_argument('array', type=str, help='Input array.')
     parser_sort.set_defaults(func=my_sort_handler)
 

@@ -1,5 +1,5 @@
 #idea files
-.idea/*
+.idea/
 
 #virtualenv
 venv-labs-python-1/*
