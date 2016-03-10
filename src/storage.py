@@ -2,8 +2,9 @@ import pickle, re
 
 
 class Storage(object):
-    _set = set()
-    _working = False
+    def __init__(self):
+        self._set = set()
+        self._working = False
 
     def run(self):
         self._working = True
@@ -36,7 +37,7 @@ class Storage(object):
         return ' '.join(self._set.intersection(set(args)))
 
     def list(self, *args):
-        return ' '.join(self._set)
+        return ' '.join(map(str, self._set))
 
     def exit(self, *args):
         self._working = False

@@ -2,11 +2,11 @@ import re, collections
 
 
 class WordCount(object):
-    _words = collections.Counter()
-    _average_words_in_sentence = 0
-    _word_excludes = ('', ' ', '-', '\n')
-
     def __init__(self, text):
+        self._words = collections.Counter()
+        self._average_words_in_sentence = 0
+        self._word_excludes = ('', ' ', '-', '\n')
+
         text = re.sub('[!?]', '.', text)
         text = re.sub('\.\.\.', '.', text)
         text = re.sub('[\n:,;()]', '', text)
