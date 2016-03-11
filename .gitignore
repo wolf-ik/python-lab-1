@@ -6,3 +6,4 @@ venv-labs-python-1/*
 
 #pyc
 */*.pyc
+*/*.py~
