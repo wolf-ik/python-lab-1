@@ -1,4 +1,4 @@
-import argparse, fibonacci, sort, storage, wordcount
+import argparse, fibonacci, sort, storage, wordcount, regex
 
 
 def fibonacci_handler(args):
@@ -30,6 +30,10 @@ def word_count_handler(args):
             print('{}: {}'.format(key, value))
 
 
+def regex_handler(args):
+    print(regex.regex_handler(args.string, type=args.type))
+
+
 def parse_args():
     parser = argparse.ArgumentParser(description='My wonderful description.')
     subparsers = parser.add_subparsers()
@@ -51,6 +55,11 @@ def parse_args():
     parser_word_count.add_argument('k', type=int, help='Top K N-gramm.')
     parser_word_count.add_argument('n', type=int, help='Length N-gramm.')
     parser_word_count.set_defaults(func=word_count_handler)
+
+    parser_regex = subparsers.add_parser('regex', help='Regex validation.')
+    parser_regex.add_argument('type', type=str, help='Types: email/float/url.')
+    parser_regex.add_argument('string', type=str, help='String.')
+    parser_regex.set_defaults(func=regex_handler)
 
     return parser.parse_args()
 
