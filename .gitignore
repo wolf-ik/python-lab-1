@@ -1,9 +1,11 @@
 #idea files
-.idea/
+.idea/*
+*/.idea/*
 
 #virtualenv
-venv-labs-python-1/*
+venv/*
 
 #pyc
 */*.pyc
 */*.py~
+
